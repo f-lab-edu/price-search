@@ -28,3 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: gradle checkstyle
         run: ./gradlew checkstyleMain
+
+      # Runs a single command using the runners shell
+      - name: gradle integrationTest
+        run: ./gradlew integrationTest
