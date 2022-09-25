@@ -1,9 +1,10 @@
 package com.flab.pricesearch.user.dto;
 
+import com.flab.pricesearch.constant.Gender;
+import java.time.LocalDate;
+import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -19,10 +20,10 @@ public class UserDto {
   private String userName;
 
   @NotBlank(message = "생년월일은 필수 입력값 입니다.")
-  private String birthDate;
+  private LocalDate birthDate;
 
   @NotBlank(message = "성별은 필수 입력값 입니다.")
-  private String gender;
+  private Gender gender;
 
   @NotBlank(message = "전화번호는 필수 입력값 입니다.")
   private String tel;
@@ -32,5 +33,9 @@ public class UserDto {
 
   @NotBlank(message = "주소는 필수 입력값 입니다.")
   private String address;
+
+  @NotBlank(message = "약관 동의를 진행해 주세요.")
+  private Boolean termsAgreeYn;
+
 
 }
