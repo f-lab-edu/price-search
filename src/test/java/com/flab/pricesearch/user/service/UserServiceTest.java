@@ -37,6 +37,8 @@ public class UserServiceTest {
   @Test
   @DisplayName("회원가입 테스트")
   public void saveUserTest(){
+
+    assertThat(1).isEqualTo(1);
 //    User user = createUser();
 //    User savedUser = userService.saveUser(user);
 //
