@@ -1,9 +1,9 @@
 package com.flab.pricesearch.user.domain;
 
-import com.flab.pricesearch.constant.Gender;
-import com.flab.pricesearch.constant.PlatformType;
-import com.flab.pricesearch.constant.RoleType;
-import com.flab.pricesearch.constant.UserStatus;
+import com.flab.pricesearch.user.constant.Gender;
+import com.flab.pricesearch.user.constant.PlatformType;
+import com.flab.pricesearch.user.constant.RoleType;
+import com.flab.pricesearch.user.constant.UserStatus;
 import com.flab.pricesearch.user.dto.UserDto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
