@@ -11,18 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserService {
 
-  private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-  public User saveUser(User user) {
-    validateDuplicationUser(user);
-    return userRepository.save(user);
-  }
-
-  private void validateDuplicationUser(User user) {
-    User findUser = userRepository.findByUserId(user.getUserId());
-    if (findUser != null) {
-      throw new IllegalStateException(" 이미 가입된 회원 입니다.");
+    public User saveUser(User user) {
+        validateDuplicationUser(user);
+        return userRepository.save(user);
     }
-  }
+
+    private void validateDuplicationUser(User user) {
+        User findUser = userRepository.findByUserId(user.getUserId());
+        if (findUser != null) {
+            throw new IllegalStateException(" 이미 가입된 회원 입니다.");
+        }
+    }
 }
 
