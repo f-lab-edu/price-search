@@ -44,4 +44,4 @@ public class UserServiceTest {
 
         assertThat(user.getUserId()).isEqualTo(savedUser.getUserId());
     }
-}가
+}
