@@ -2,13 +2,16 @@ package com.flab.pricesearch.product;
 
 import com.flab.pricesearch.image.ProductImage;
 
+import javax.validation.constraints.NotBlank;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import org.springframework.beans.BeanUtils;
 
-import javax.validation.constraints.NotBlank;
-import java.util.List;
+
 
 @Getter
 @Setter
