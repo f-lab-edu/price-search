@@ -45,4 +45,12 @@ public class ProductServiceTest {
             assertThat( productDto.getName() ).isEqualTo( "TEST1" );
         });
     }
+
+    @Test
+    public void ProductUpdateTest() {
+        Product product = productService.findById(1);
+        product.setName( "test2" );
+        ProductDto productEntity = productService.updateProduct(1);
+        assertThat( productEntity.getName() ).isEqualTo( "test2" );
+    }
 }
