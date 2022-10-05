@@ -1,15 +1,11 @@
 package com.flab.pricesearch.user.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.flab.pricesearch.user.constant.Gender;
 import com.flab.pricesearch.user.domain.User;
 import com.flab.pricesearch.user.dto.UserDto;
-
 import java.time.LocalDate;
-
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +20,7 @@ public class UserServiceTest {
     @Autowired
     UserService userService;
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    PasswordEncoder passwordEncoder;
 
     public User createUser() {
         UserDto userDto = new UserDto();
@@ -48,19 +44,4 @@ public class UserServiceTest {
 
         assertThat(user.getUserId()).isEqualTo(savedUser.getUserId());
     }
-
-
-    @Test
-    @DisplayName("중복 회원 가입 테스트")
-    public void saveDuplicateUserTest() {
-        User user1 = createUser();
-        User user2 = createUser();
-        userService.saveUser(user1);
-
-        Throwable e = assertThrows(IllegalStateException.class, () -> {
-            userService.saveUser(user2);});
-        assertEquals("이미 가입된 회원입니다.", e.getMessage());
-    }
-
-
-}
+}가
