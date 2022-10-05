@@ -1,7 +1,6 @@
 package com.flab.pricesearch.product;
 
 import com.flab.pricesearch.image.ProductImage;
-
 import java.util.List;
 
 public interface ProductInfo {
