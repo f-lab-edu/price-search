@@ -1,8 +1,8 @@
 package com.flab.pricesearch.product;
 
 import com.flab.pricesearch.image.ProductImage;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
+import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

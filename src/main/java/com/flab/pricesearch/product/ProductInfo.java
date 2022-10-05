@@ -26,4 +26,5 @@ public interface ProductInfo {
      *
      */
     void crawlProductInfo(String searchWord);
+
 }
