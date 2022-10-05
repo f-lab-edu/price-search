@@ -2,59 +2,47 @@ package com.flab.pricesearch.product;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.runner.RunWith;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.*;
 
-import javax.sql.DataSource;
-import javax.transaction.Transactional;
-import java.sql.Connection;
+import java.util.List;
 
 @SpringBootTest
-//@Transactional
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @RunWith(SpringRunner.class)
 public class ProductServiceTest {
-    //@Autowired
-    DataSource dataSource;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     ProductService productService;
 
-    @BeforeAll
+    @BeforeEach
     void init() {
-        System.out.println( "Before All");
-        try(Connection conn = dataSource.getConnection()) {
-            ScriptUtils.executeSqlScript(conn, new ClassPathResource("/resources/db/h2/testData.sql"));
-            System.out.println( "insert success!!!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        logger.debug( "★★★★★Before All★★★★★" );
     }
     @Test
     public void ProductInsertTest() {
-        ProductEntity product = new ProductEntity();
+        Product product = new Product();
         product.setName("test");
-        ProductEntity productEntity = productService.insertProduct(product);
+        ProductDto productEntity = productService.insertProduct(product);
         assertThat( productEntity.getName() ).isEqualTo("test");
     }
 
     @Test
-    public void ProductUpdateTest() {
-        ProductEntity product = productService.findById(1);
-        product.setName("test2");
-        ProductEntity productEntity = productService.updateProduct(1);
-        assertThat( productEntity.getName() ).isEqualTo( "test2" );
-    }
-
-    @Test
     public void ProductReadTest() {
-        ProductEntity product = productService.findById(1);
-        assertThat( product.getName() ).isEqualTo( "TEST1" );
+        List<ProductDto> productDtoList = productService.findAll();
+        productDtoList.stream().forEach(productDto -> {
+            assertThat( productDto.getId() ).isEqualTo( 1 );
+            assertThat( productDto.getName() ).isEqualTo( "TEST1" );
+        });
     }
 }

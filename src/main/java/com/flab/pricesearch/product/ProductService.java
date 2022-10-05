@@ -1,12 +1,15 @@
 package com.flab.pricesearch.product;
 
+import com.flab.pricesearch.image.ProductImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class ProductService implements ProductInfo {
     private final ProductRepository productRepository;
 
@@ -14,19 +17,37 @@ public class ProductService implements ProductInfo {
         this.productRepository = productRepository;
     }
 
-    public ProductEntity findById(long id) {
-        return productRepository.getById(id);
+    public Product findById(long id) {
+        return productRepository.findById(id).orElseGet(Product::new);
     }
 
-    public List<ProductEntity> findAll(long id) {
-        return productRepository.findAll();
+    public List<ProductDto> findAll() {
+        List<Product> products = productRepository.findAll();
+        return products.stream()
+                .map(product -> ProductDto.productOf(product))
+                .collect(Collectors.toList());
     }
 
-    public ProductEntity insertProduct(ProductEntity productEntity) {
-        return productRepository.save(productEntity);
+    public ProductDto insertProduct(Product product) {
+        return ProductDto.productOf(productRepository.save(product));
     }
 
-    public ProductEntity updateProduct(long id) {
-        return productRepository.save(productRepository.getById(id));
+    public ProductDto updateProduct(long id) {
+        return ProductDto.productOf(productRepository.save(productRepository.getById(id)));
+    }
+
+    @Override
+    public List<ProductImage> getImages() {
+        return null;
+    }
+
+    @Override
+    public String createSearchWord(ProductDto productDto) {
+        return null;
+    }
+
+    @Override
+    public void crawlProductInfo(String searchWord) {
+
     }
 }
