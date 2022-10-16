@@ -1,6 +1,7 @@
 package com.flab.pricesearch.user.service;
 
 
+import com.flab.pricesearch.exception.user.DuplicatedIdException;
 import com.flab.pricesearch.user.domain.SpringSecurityUser;
 import com.flab.pricesearch.user.domain.User;
 import com.flab.pricesearch.user.repository.UserRepository;
@@ -27,7 +28,7 @@ public class UserService implements UserDetailsService {
     private void validateDuplicationUser(User user) {
         User findUser = userRepository.findByUserId(user.getUserId());
         if (findUser != null) {
-            throw new IllegalStateException("이미 가입된 회원 입니다.");
+            throw new DuplicatedIdException("이미 가입된 회원 입니다.");
         }
     }
 

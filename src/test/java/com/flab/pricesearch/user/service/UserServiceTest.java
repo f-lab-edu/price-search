@@ -4,17 +4,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.flab.pricesearch.exception.user.DuplicatedIdException;
 import com.flab.pricesearch.user.constant.Gender;
 import com.flab.pricesearch.user.domain.User;
 import com.flab.pricesearch.user.dto.UserDto;
 import java.time.LocalDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @Transactional
@@ -54,7 +53,7 @@ public class UserServiceTest {
         User user1 = createUser();
         User user2 = createUser();
         userService.saveUser(user1);
-        Throwable e = assertThrows(IllegalStateException.class, () -> {
+        Throwable e = assertThrows(DuplicatedIdException.class, () -> {
             userService.saveUser(user2);});
         assertEquals("이미 가입된 회원 입니다.", e.getMessage());
     }
