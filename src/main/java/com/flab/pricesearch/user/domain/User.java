@@ -1,10 +1,10 @@
 package com.flab.pricesearch.user.domain;
 
 import com.flab.pricesearch.cart.Cart;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.List;
 import lombok.Data;
 
 @Data
