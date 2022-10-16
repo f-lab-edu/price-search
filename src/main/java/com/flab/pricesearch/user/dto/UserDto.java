@@ -1,10 +1,8 @@
 package com.flab.pricesearch.user.dto;
 
 import com.flab.pricesearch.user.constant.Gender;
-
 import java.time.LocalDate;
 import javax.validation.constraints.NotBlank;
-
 import lombok.Getter;
 import lombok.Setter;
 

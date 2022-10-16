@@ -6,7 +6,6 @@ import com.flab.pricesearch.user.domain.SpringSecurityUser;
 import com.flab.pricesearch.user.domain.User;
 import com.flab.pricesearch.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
