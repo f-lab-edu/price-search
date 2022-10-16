@@ -5,17 +5,16 @@ import com.flab.pricesearch.user.constant.PlatformType;
 import com.flab.pricesearch.user.constant.RoleType;
 import com.flab.pricesearch.user.constant.UserStatus;
 import com.flab.pricesearch.user.dto.UserDto;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 @Getter
