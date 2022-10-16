@@ -37,7 +37,7 @@ public class UserController {
         try {
             User user = User.createUser(userDto, passwordEncoder);
             userService.saveUser(user);
-        } catch (IllegalStateException e) {
+        } catch (Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "/user/signUpForm";
         }
