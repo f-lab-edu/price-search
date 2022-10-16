@@ -28,7 +28,7 @@ public class User {
     private String password;                  // 비밀번호
 
     @Enumerated(EnumType.STRING)
-    private PlatformType platformType;        // 플랫폼 타입 (DISABLE, NAVER, KAKAO)
+    private PlatformType platformType;        // 플랫폼 타입 (Email, NAVER, KAKAO)
 
     private String token;                     // 토큰
 
