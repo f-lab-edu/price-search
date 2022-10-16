@@ -5,6 +5,7 @@ import com.flab.pricesearch.product.Product;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,35 +13,30 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "PRICE")
+@Table(name = "price")
 public class Price {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private long id; // id
 
-    @Column(name = "MARKET_CODE")
-    @Enumerated
+    @Column(name = "market_code")
+    @Enumerated(EnumType.STRING)
     private MarketCode marketCode; // 마켓 코드
 
-    @Column(name = "PRICE")
+    @Column(name = "price")
     private BigDecimal price; // 가격
 
-    @Column(name = "URL")
+    @Column(name = "url")
     private String url; // 결제 가능 url
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
+    @JoinColumn
     private Product product; // 매핑된 상품정보
 }
