@@ -1,9 +1,7 @@
 package com.flab.pricesearch.product;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.runner.RunWith;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -40,7 +38,7 @@ public class ProductServiceTest {
     @Test
     public void ProductReadTest() {
         List<ProductDto> productDtoList = productService.findAll();
-        productDtoList.stream().forEach(productDto -> {
+        productDtoList.forEach(productDto -> {
             assertThat( productDto.getId() ).isEqualTo( 1 );
             assertThat( productDto.getName() ).isEqualTo( "TEST1" );
         });
@@ -48,7 +46,7 @@ public class ProductServiceTest {
 
     @Test
     public void ProductUpdateTest() {
-        Product product = productService.findById(1);
+        ProductDto product = productService.findById(1);
         product.setName( "test2" );
         ProductDto productEntity = productService.updateProduct(1);
         assertThat( productEntity.getName() ).isEqualTo( "test2" );

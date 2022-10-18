@@ -16,14 +16,14 @@ public class ProductService implements ProductInfo {
         this.productRepository = productRepository;
     }
 
-    public Product findById(long id) {
-        return productRepository.findById(id).orElseGet(Product::new);
+    public ProductDto findById(long id) {
+        return ProductDto.productOf(productRepository.findById(id).orElseGet(Product::new));
     }
 
     public List<ProductDto> findAll() {
         List<Product> products = productRepository.findAll();
         return products.stream()
-                .map(product -> ProductDto.productOf(product))
+                .map(ProductDto::productOf)
                 .collect(Collectors.toList());
     }
 

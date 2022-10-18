@@ -32,7 +32,6 @@ public class Product {
     private String name;
 
     @OneToMany(mappedBy = "product")
-    @JoinColumn
     private List<Cart> cartList;
 
     @CreatedBy
