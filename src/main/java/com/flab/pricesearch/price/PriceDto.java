@@ -2,8 +2,8 @@ package com.flab.pricesearch.price;
 
 import com.flab.pricesearch.market.MarketCode;
 import com.flab.pricesearch.product.Product;
-import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
