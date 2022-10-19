@@ -13,7 +13,8 @@ public class SpringSecurityUser extends User {
 
     public SpringSecurityUser(String username, String password,
                               boolean enabled, boolean accountNonExpired,
-                              boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+                              boolean credentialsNonExpired, boolean accountNonLocked,
+                              Collection<? extends GrantedAuthority> authorities) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired,
             accountNonLocked,
             authorities);
